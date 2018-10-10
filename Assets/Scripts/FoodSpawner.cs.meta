@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 6944288ad7277b24d9e77850bc8a54aa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - FoodPrefab: {instanceID: 0}
+  - BorderTop: {instanceID: 0}
+  - BorderBottom: {fileID: 4186896385847104, guid: 7c5bf29b83ee8ea4a90fc603898d58e2,
+      type: 2}
+  - BorderLeft: {instanceID: 0}
+  - BorderRight: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

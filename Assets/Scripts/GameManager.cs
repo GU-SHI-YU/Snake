@@ -1,0 +1,35 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+public class GameManager : MonoBehaviour {
+
+    public Snake snake;
+    public FoodSpawner food;
+    public Text title;
+    public Text press;
+    public Text score;
+
+	// Use this for initialization
+	void Start () {
+      
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            snake.gameObject.SetActive(true);
+            food.gameObject.SetActive(true);
+            score.enabled = true;
+            score.text = "得分：" + snake.getscore;
+
+
+            title.enabled = false;
+            press.enabled = false;
+        }
+	}
+
+    
+}
