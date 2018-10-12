@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public Snake snake;
-    public FoodSpawner food;
+    //public FoodSpawner food;
     public Text title;
     public Text press;
     public Text score;
@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Space))
         {
             snake.gameObject.SetActive(true);
-            food.gameObject.SetActive(true);
             score.enabled = true;
             score.text = "得分：" + snake.getscore;
 

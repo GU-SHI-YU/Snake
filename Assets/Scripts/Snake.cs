@@ -6,7 +6,8 @@ using System;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Snake : MonoBehaviour {
+public class Snake : MonoBehaviour
+{
 
     public float speed = 0.3f;
     Vector2 dir = Vector2.up;
@@ -16,12 +17,22 @@ public class Snake : MonoBehaviour {
     public Action OnLose;
     public int getscore;
     public Text score;
+    public GameObject FoodPrefab;
 
-	// Use this for initialization
-	void Start () {
+    public Transform BorderTop;
+    public Transform BorderBottom;
+    public Transform BorderLeft;
+    public Transform BorderRight;
+
+    // Use this for initialization
+    void Start()
+    {
         InvokeRepeating("Move", speed, speed);
-		
-	}
+        int x = (int)UnityEngine.Random.Range(BorderLeft.position.x, BorderRight.position.x);
+        int y = (int)UnityEngine.Random.Range(BorderBottom.position.y, BorderTop.position.y);
+        Instantiate(FoodPrefab, new Vector2(x, y), Quaternion.identity);
+
+    }
     void Move()
     {
         Vector2 v = transform.position;
@@ -33,7 +44,7 @@ public class Snake : MonoBehaviour {
 
             ate = false;
         }
-        else if(tail.Count > 0)
+        else if (tail.Count > 0)
         {
             tail.Last().position = v;
             tail.Insert(0, tail.Last());
@@ -63,8 +74,8 @@ public class Snake : MonoBehaviour {
         }
     }
 
-        void OnTriggerEnter2D(Collider2D coll)
-        {
+    void OnTriggerEnter2D(Collider2D coll)
+    {
 
         if (coll.name.StartsWith("Food"))
         {
@@ -75,14 +86,20 @@ public class Snake : MonoBehaviour {
             speed -= 0.02f;
             if (speed < 0.08f)
                 speed = 0.08f;
+            Spawn();
 
         }
         else
         {
             SceneManager.LoadScene(0);
-        
-        }
-        
-         }
 
+        }
+
+    }
+    void Spawn()
+    {
+        int x = (int)UnityEngine.Random.Range(BorderLeft.position.x, BorderRight.position.x);
+        int y = (int)UnityEngine.Random.Range(BorderBottom.position.y, BorderTop.position.y);
+        Instantiate(FoodPrefab, new Vector2(x, y), Quaternion.identity);
+    }
 }
